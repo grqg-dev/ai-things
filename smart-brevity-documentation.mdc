@@ -1,0 +1,162 @@
+---
+description: Generate documentation following Axios Smart Brevity principles
+alwaysApply: false
+---
+# Smart Brevity Documentation Style
+
+When generating documentation, investigation reports, or analysis documents, follow **Axios Smart Brevity** principles to create clear, scannable, and actionable content.
+
+## Core Principles
+
+1. **Audience First:** Write for the busy reader, not for your own ego. What do they *need* to know in the next 30 seconds?
+2. **Be Brief, Not Shallow:** Cutting words doesn't mean cutting value. Every sentence must provide a new data point or insight.
+3. **Visual Scannability:** Use white space and bolding so a reader can grasp 80% of the value without reading every word.
+4. **Stop When You're Done:** If the point is made in three sentences, do not write a fourth.
+
+## The Smart Brevity "Axioms"
+
+*Use these bolded headers (Axioms) to anchor your sections. Choose the ones that fit the context:*
+
+* **Why it matters:** The impact on the business, user, or codebase.
+* **The big picture:** How this fits into the broader strategy or system architecture.
+* **By the numbers:** Hard data, performance metrics, or cost implications. **(Conditional—see below.)**
+* **What we're hearing:** Feedback from users, stakeholders, or logs.
+* **The catch:** Risks, trade-offs, or hidden technical debt.
+* **What to watch:** Upcoming triggers, deadlines, or potential side effects.
+
+### When to Use "By the Numbers"
+
+Include this section **only** when the data:
+- **Quantifies impact:** Revenue loss, error rates, user drop-off, latency spikes
+- **Shows trends:** Before/after, week-over-week, percentages
+- **Drives urgency:** Numbers that make the reader say "oh shit"
+
+**Skip it** when you're just reporting:
+- Raw field values (e.g., "Account HQ country: Canada")
+- Counts without context (e.g., "8 flow failures" with no baseline)
+- Metadata or null values
+- Facts better expressed in prose
+
+---
+
+## Document Structure
+
+```markdown
+# [Punchy Headline: 6-10 Words]
+
+[The Lede: A single, "mic-drop" sentence that summarizes the entire document. No "This document is about..."]
+
+## What's Happening
+[2 sentences max. Use one bolded phrase for the "one thing" they must remember.]
+
+**The bottom line:** [One sentence summary of the resolution or status.]
+
+---
+
+## Why It Matters
+**The impact:** [Direct consequence]
+**The stakes:** [What happens if we don't act]
+
+---
+
+## [Axiom of Choice - e.g., "By the Numbers" or "The Big Picture"]
+* [Data point/Insight 1]
+* [Data point/Insight 2]
+
+---
+
+## What's Next
+* **Immediate:** [Action]
+* **Milestone:** [Date/Event]
+
+---
+
+## Go Deeper
+[Technical details, code blocks, and logs go here. Only for those who need to "nerd out."]
+
+```
+
+---
+
+## Writing Mechanics (The Spec)
+
+### 1. The Lede (The First Sentence)
+
+* **Rule:** The first sentence must be the most important.
+* **Test:** If the reader only reads this sentence, do they have the "gist"?
+* **Avoid:** "In this report, we will look at..." or "As previously discussed..."
+
+### 2. Paragraph Discipline
+
+* **Length:** Maximum 2-3 sentences.
+* **Format:** One idea per paragraph.
+* **Bolding:** Bold the **first few words** of a paragraph or bullet point if they carry the primary weight.
+
+### 3. Word Choice (The "Axios" Filter)
+
+* **Remove "Mushy" Words:** Delete: *really, very, actually, basically, potentially, currently, essentially.*
+* **Strong Verbs:** Use "The error **shuts down** the API" instead of "The API is experiencing a state of non-functionality."
+* **Active Voice Only:** "The team fixed the bug" NOT "The bug was fixed by the team."
+
+### 4. Visual Eye-Catchers
+
+* Use `**Bold**` for emphasis on key takeaways.
+* Use `> Blockquotes` for direct user feedback or critical error logs.
+* Use `---` (Horizontal Rules) to separate distinct thoughts.
+
+---
+
+## Anti-Patterns to Avoid
+
+* ❌ **The "Throat Clear":** "Introduction," "Background," "Context." (Skip straight to the news).
+* ❌ **Corporate Speak:** "Leveraging synergies," "Holistic approach," "Moving forward."
+* ❌ **The Wall of Text:** Any block of text longer than 4 lines.
+* ❌ **Adverbs:** If a verb needs an adverb, you chose the wrong verb.
+* ❌ **Filler "By the Numbers":** Tables of raw field values, nulls, or counts without context.
+
+---
+
+## Pre-Flight Checklist for the AI
+
+*Before outputting, ask yourself:*
+
+1. **Can I cut the first paragraph?** (Usually, yes).
+2. **Is the headline an active statement?** (e.g., "Database Migrated" vs "Update on Database").
+3. **Are there at least two "Axioms"?** (e.g., Why it matters).
+4. **Is there a "Go Deeper" section for the technical weeds?**
+5. **Did I use bolding to help the reader "scan" the main points?**
+6. **Does "By the Numbers" add insight?** (If not, delete it.)
+
+---
+
+## Good vs. Bad Examples
+
+### The Headline
+
+❌ **Bad:** Investigation into the Slow Loading Times on the Dashboard Page
+✅ **Good:** Dashboard Latency Spikes 400% During Peak Hours
+
+### The "Why It Matters"
+
+❌ **Bad:** It is important to address this because it affects the user experience and could lead to churn which is bad for our Q3 goals.
+✅ **Good:** **Business impact:** High latency causes 15% drop-off at checkout. Q3 revenue is at risk.
+
+### By the Numbers
+
+❌ **Bad:**
+| Data Point | Value |
+|------------|-------|
+| Account HQ country | Canada |
+| Account HQ state | null |
+| Flow failures | 8+ |
+
+✅ **Good:**
+| Metric | Before | After |
+|--------|--------|-------|
+| Error rate | 12% | 0.3% |
+| Close time | 45 min | 2 min |
+
+### Technical Detail
+
+❌ **Bad:** (Placed at the top) We looked at the `useEffect` hooks in `dashboard.tsx` and noticed that the dependency array was missing the `userId` variable which caused an infinite loop.
+✅ **Good:** (Placed in "Go Deeper") **Root cause:** Infinite loop in `dashboard.tsx`. Missing `userId` in `useEffect` dependency array.
